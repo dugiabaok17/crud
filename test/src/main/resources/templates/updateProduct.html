@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <title>Product</title>
+</head>
+<body>
+<div class="container" style="margin-top: 10px;">
+    <div class="row"
+         style="border: 1px darkgrey solid; border-radius: 10px; width: 50%; margin: 0 auto; padding: 20px;">
+        <div class="col-sm-12">
+
+            <h2 class="myclass">Product</h2>
+            <form th:action="@{'/updateProduct/' + ${iddd}}"  th:object="${heheeh}" method="post"
+                  enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Name Product</label> <input type="text" class="form-control" th:field="*{productName}"  name="name" placeholder="Enter name" id="name" value="">
+                </div>
+                <div class="form-group">
+                    <label>Color</label> <input type="text" class="form-control" th:field="*{color}" name="photo" placeholder="Enter color" id="photo">
+                </div>
+                <div class="form-group">
+                    <label>Quatity</label> <input type="number" class="form-control" th:field="*{quantity}" name="email" placeholder="Enter quatity" id="email" value="">
+                </div>
+                <div class="form-group">
+                    <label>Sell Price</label> <input type="text" class="form-control" th:field="*{sellPrice}" name="phone" placeholder="Enter sell price" id="phone" value="">
+                </div>
+                <div class="form-group">
+                    <label>Origin Price</label> <input type="text" class="form-control" th:field="*{originPrice}" name="salary" placeholder="Enter origin price" id="salary" value="">
+                </div>
+
+                <div class="form-group">
+                    <label>Choose Brand</label>
+                    <select th:field="*{brandName}" class="form-control" id="departId" name="departId">
+                        <option th:each="brands : ${heheeh}" th:value="${brands.brandName}" th:text="${brands.brandName}"  value="PB1"></option>
+
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Choose Subcategory</label>
+                    <select th:field="*{subCateName}" class="form-control" id="departIddd" name="departIdd">
+                        <option  th:each="subCateName : ${subCategoryName}" th:value="${subCateName.getSubCateName()}" th:text="${subCateName.getSubCateName()}" value="PB1">Ke Toan</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Choose Subcategory</label>
+                    <select th:field="*{statusName}" class="form-control" id="departIdd" name="departIdd">
+                        <option th:each="status : ${statusName}" th:value="${status.statusName}" th:text="${status.statusName}" value="PB1">Ke Toan</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="reset" class="btn btn-primary">Cancel</button>
+                <a class="btn btn-primary" href="/products">Display List Staff</a>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
